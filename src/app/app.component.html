@@ -10,7 +10,19 @@
 <div>Connected: {{connected}}</div>
 <div *ngIf="error">Error: {{error}}</div>
 <div>
-  <div *ngFor="let user of users | keyvalue">{{user.key}}: {{user.value}}</div>
+  <div *ngFor="let user of users | keyvalue">
+    <div>{{user.key}}</div>
+    <div *ngIf="user.value != null; else noData">
+      <div>{{user.value.time}}</div>
+      <div *ngIf="user.value.carData">
+        <div>Throttle: {{user.value.carData.throttleInput}}</div>
+        <div>Gear: {{user.value.carData.gear}}</div>
+      </div>
+    </div>
+    <ng-template #noData>
+      <div>No data</div>
+    </ng-template>
+  </div>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
