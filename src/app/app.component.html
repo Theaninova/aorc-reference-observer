@@ -1,22 +1,15 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <div>Connected: {{connected}}</div>
 <div *ngIf="error">Error: {{error}}</div>
 <div>
   <div *ngFor="let user of users | keyvalue">
-    <div>{{user.key}}</div>
+    <h1>{{user.key}}</h1>
     <div *ngIf="user.value != null; else noData">
-      <div>{{user.value.time}}</div>
+      <div>Time: {{user.value.time}}</div>
       <div *ngIf="user.value.carData">
-        <div>Throttle: {{user.value.carData.throttleInput}}</div>
-        <div>Gear: {{user.value.carData.gear}}</div>
+        <h2>Car Data</h2>
+        <car-data [carData]="user.value.carData"></car-data>
+        <h2>Drivetrain</h2>
+        <drivetrain-data [drivetrain]="user.value.carData.drivetrain"></drivetrain-data>
       </div>
     </div>
     <ng-template #noData>
@@ -24,12 +17,3 @@
     </ng-template>
   </div>
 </div>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-

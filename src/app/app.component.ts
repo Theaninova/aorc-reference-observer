@@ -1,31 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {io, Socket} from "socket.io-client";
-
-type Vector3 = [number, number, number]; // float
-type RotationApproximate = [number, number, number]; // byte
-
-interface StageUpdateData {
-  time: number; // seconds fraction
-  carData?: {
-    frame: number; // int
-    position: Vector3;
-    rotation: RotationApproximate;
-    velocity: Vector3;
-    throttleInput: number; // sbyte
-    steeringInput: number; // sbyte
-    brakeInput: number; // sbyte
-    handbrakeInput: boolean;
-    gear: number; // byte
-    resetCarThisFrame: boolean;
-    engineCondition: number; // sbyte
-    dirtiness: number; // sbyte
-  }
-}
-
-interface ClientData<T = undefined> {
-  user: string;
-  data: T;
-}
+import {ClientData, StageUpdateData} from "./protocol";
 
 @Component({
   selector: 'app-root',

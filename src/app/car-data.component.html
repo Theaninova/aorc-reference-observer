@@ -1,0 +1,8 @@
+<div>Throttle: {{_carData.throttleInput}}</div>
+<div>Steering: {{_carData.steeringInput}}</div>
+<div>Brake: {{_carData.brakeInput}}</div>
+<div>Handbrake {{_carData.brakeInput ? 'On' : 'Off'}}</div>
+<div>Clutch: {{_carData.clutchInput}}</div>
+<div *ngIf="_carData.absTriggered">ABS</div>
+<div *ngIf="_carData.tcsTriggered">TCS</div>
+<div *ngIf="_carData.espTriggered">ESP</div>
