@@ -10,7 +10,7 @@
 <div>Connected: {{connected}}</div>
 <div *ngIf="error">Error: {{error}}</div>
 <div>
-  <div *ngFor="let user of users">{{user}}</div>
+  <div *ngFor="let user of users | keyvalue">{{user.key}}: {{user.value}}</div>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
