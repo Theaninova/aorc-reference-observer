@@ -1,15 +1,15 @@
-import {Component, Input} from "@angular/core";
-import {CarData} from "./protocol";
+import {Component, Input} from '@angular/core'
+import {CarData} from './protocol'
 
 @Component({
-    selector: 'car-data',
-    templateUrl: './car-data.component.html',
-    styleUrls: ['./car-data.css']
+  selector: 'car-data',
+  templateUrl: './car-data.component.html',
+  styleUrls: ['./car-data.component.scss'],
 })
 export class CarDataComponent {
-  _carData!: CarData;
+  _carData!: CarData
 
   @Input() set carData(carData: CarData) {
-    this._carData = carData;
+    this._carData = carData
   }
 }

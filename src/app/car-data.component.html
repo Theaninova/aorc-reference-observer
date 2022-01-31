@@ -1,8 +1,10 @@
-<div>Throttle: {{_carData.throttleInput}}</div>
-<div>Steering: {{_carData.steeringInput}}</div>
-<div>Brake: {{_carData.brakeInput}}</div>
-<div>Handbrake {{_carData.brakeInput ? 'On' : 'Off'}}</div>
-<div>Clutch: {{_carData.clutchInput}}</div>
-<div *ngIf="_carData.absTriggered">ABS</div>
-<div *ngIf="_carData.tcsTriggered">TCS</div>
-<div *ngIf="_carData.espTriggered">ESP</div>
+<div class="horizontal">
+  <slider-input-view [value]="_carData.throttleInput"> Throttle </slider-input-view>
+  <slider-input-view [value]="_carData.steeringInput">Steering</slider-input-view>
+  <slider-input-view [value]="_carData.brakeInput">Brake</slider-input-view>
+  <slider-input-view [value]="_carData.clutchInput">Clutch</slider-input-view>
+  <slider-input-view [value]="_carData.handbrakeInput">Handbrake</slider-input-view>
+  <feature-bulb-view [isOn]="_carData.absTriggered">ABS</feature-bulb-view>
+  <feature-bulb-view [isOn]="_carData.tcsTriggered">TCS</feature-bulb-view>
+  <feature-bulb-view [isOn]="_carData.espTriggered">ESP</feature-bulb-view>
+</div>

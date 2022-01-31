@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --elevation-1: alpha(var(--primary), 5%);
+  --elevation-2: alpha(var(--primary), 10%);
+  --elevation-3: alpha(var(--primary), 15%);
+}
+
+.theme-light {
+  --primary: #A93040;
+  --on-primary: #FFFFFF;
+  --primary-container: #FDD9DB;
+  --on-primary-container: #3F010B;
+
+  --secondary: #715E0C;
+  --on-secondary: #FFFFFF;
+  --secondary-container: #FBE37B;
+  --on-secondary-container: #221C01;
+
+  --tertiary: #795A0C;
+  --on-tertiary: #FFFFFF;
+  --tertiary-container: #FFFFFF;
+  --on-tertiary-container: #261A01;
+
+  --error: #B42020;
+  --on-error: #FFFFFF;
+  --error-container: #FDDAD4;
+  --on-error-container: #3F0102;
+
+  --success: #246F0C;
+  --on-success: #FFFFFF;
+  --success-container: #84FF49;
+  --on-success-container: #052201;
+
+  --background: #FCFCFC;
+  --on-background: #1E1B16;
+
+  --surface: #FCFCFC;
+  --on-surface: #1E1B16;
+  --outline: #837373;
+  --surface-variant: #F3DDDD;
+  --on-surface-variant: #514343;
+}
+
+.theme-dark {
+  --primary: #FBB3B8;
+  --on-primary: #640217;
+  --primary-container: #88152A;
+  --on-primary-container: #FDD9DB;
+
+  --secondary: #E6C638;
+  --on-secondary: #3B3003;
+  --secondary-container: #554607;
+  --on-secondary-container: #FBE37B;
+
+  --tertiary: #F1C050;
+  --on-tertiary: #402E03;
+  --tertiary-container: #5C4307;
+  --on-tertiary-container: #FCE0A4;
+
+  --error: #FBB5AA;
+  --on-error: #650306;
+  --error-container: #8F060C;
+  --on-error-container: #FDDAD4;
+
+  --success: #58E624;
+  --on-success: #0E3A03;
+  --success-container: #195306;
+  --on-success-container: #84FF49;
+
+  --background: #1E1B16;
+  --on-background: #E9E1D8;
+
+  --surface: #1E1B16;
+  --on-surface: #E9E1D8;
+  --outline: #9F8C8C;
+  --surface-variant: #514343;
+  --on-surface-variant: #D6C1C1;
+}

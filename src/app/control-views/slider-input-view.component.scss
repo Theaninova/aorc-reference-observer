@@ -1,0 +1,46 @@
+.box {
+  border-radius: 8px;
+  height: 200px;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+
+  background-color: var(--surface-variant);
+
+  // display items stacked starting from the bottom
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.container {
+  width: 100px;
+  height: fit-content;
+  margin: 8px;
+  overflow: hidden;
+}
+
+.value {
+  font-size: 24px;
+  color: var(--on-surface-variant);
+  text-align: center;
+  font-weight: bold;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 0;
+
+  font-size: 1.1em;
+
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+  transition: background-color 0.3s ease-in-out;
+  background-color: var(--primary);
+}

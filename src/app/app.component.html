@@ -1,19 +1,54 @@
-<div>Connected: {{connected}}</div>
-<div *ngIf="error">Error: {{error}}</div>
-<div>
-  <div *ngFor="let user of users | keyvalue">
-    <h1>{{user.key}}</h1>
-    <div *ngIf="user.value != null; else noData">
-      <div>Time: {{user.value.time}}</div>
-      <div *ngIf="user.value.carData">
-        <h2>Car Data</h2>
-        <car-data [carData]="user.value.carData"></car-data>
-        <h2>Drivetrain</h2>
-        <drivetrain-data [drivetrain]="user.value.carData.drivetrain"></drivetrain-data>
-      </div>
-    </div>
-    <ng-template #noData>
-      <div>No data</div>
-    </ng-template>
+<div [ngClass]="[theme, 'background']">
+  <input type="radio" [(ngModel)]="theme" id="dark" value="theme-dark" name="theme" />
+  <label for="dark">Dark</label>
+  <input type="radio" [(ngModel)]="theme" id="light" value="theme-light" name="theme" />
+  <label for="light">Light</label>
+
+  <br />
+  <input type="checkbox" [(ngModel)]="useMock" id="use-mock" name="use-mock" />
+  <label for="light">Use Mock</label>
+
+  <div [ngClass]="[connected ? 'connected-box' : 'disconnected-box', 'connection-status-box']">
+    <div>{{ connected ? 'Connected' : 'Disconnected' }}</div>
   </div>
+  <p>
+    <a href="https://github.com/Theaninova/aorc-client/releases/latest">
+      <img
+        height="20"
+        src="https://img.shields.io/github/v/release/Theaninova/aorc-client?label=Download%20Client"
+        alt="Latest Client"
+      />
+    </a>
+    <br />
+    <a href="https://github.com/Theaninova/aorc-server/releases/latest">
+      <img
+        height="20"
+        src="https://img.shields.io/github/v/release/Theaninova/aorc-server?label=Download%20Server"
+        alt="Latest Server"
+      />
+    </a>
+    <br />
+    <i>Make sure you have the latest client and server</i>
+  </p>
+  <div>
+    <div *ngFor="let user of users | keyvalue">
+      <h1>{{ user.key }}</h1>
+      <div *ngIf="user.value !== null; else noData">
+        <div>Time: {{ user.value.time | formatTimeString }}</div>
+        <div *ngIf="user.value.carData">
+          <h2>Car Data</h2>
+          <car-data [carData]="user.value.carData"></car-data>
+          <h2>Drivetrain</h2>
+          <drivetrain-data [drivetrain]="user.value.carData.drivetrain"></drivetrain-data>
+        </div>
+      </div>
+      <ng-template #noData>
+        <div>No data</div>
+      </ng-template>
+    </div>
+  </div>
+
+  <br />
+  <br />
+  <div class="error" *ngIf="error">Error: {{ error }}</div>
 </div>
