@@ -22,7 +22,7 @@ interface StageUpdateData {
   }
 }
 
-interface ClientData<T> {
+interface ClientData<T = undefined> {
   user: string;
   data: T;
 }
@@ -43,20 +43,19 @@ export class AppComponent implements OnInit {
       transports: ['websocket'],
       upgrade: false
     });
-
-    this.client.on('userJoined', (user: string) => {this.users.set(user, null)});
-    this.client.on('userLeft', (user: string) => {
-      this.users.delete(user)
-    });
     this.client.on('connect', () => {this.connected = true});
     this.client.on('connect_error', error => {
       this.connected = false
       this.error = error.message
     });
 
+    this.client.on('userJoined', (data: ClientData) => {this.users.set(data.user, null)});
+    this.client.on('userLeft', (data: ClientData) => {
+      this.users.delete(data.user)
+    });
+
     this.client.on('stageUpdate', (data: ClientData<StageUpdateData>) => {
       this.users.set(data.user, data.data)
-      console.log(data.data)
     });
 
     this.client.connect();
