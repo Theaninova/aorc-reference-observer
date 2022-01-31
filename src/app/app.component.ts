@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {io, Socket} from 'socket.io-client'
 import {ClientData, StageUpdateData} from './protocol'
 
@@ -11,11 +11,11 @@ const mockData: ClientData<StageUpdateData>[] = [
         position: [0, 0, 0],
         rotation: [0, 0, 0],
         velocity: [0, 0, 0],
-        clutchInput: 0.5,
+        clutchInput: 0.66,
         throttleInput: 0.5,
-        steeringInput: 0.5,
-        brakeInput: 0.5,
-        handbrakeInput: 0.5,
+        steeringInput: 0.2533,
+        brakeInput: 0.52,
+        handbrakeInput: 0.663_323_44,
         tcsTriggered: false,
         espTriggered: true,
         absTriggered: false,
@@ -45,7 +45,7 @@ const mockData: ClientData<StageUpdateData>[] = [
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, OnChanges {
+export class AppComponent implements OnInit {
   client!: Socket
 
   connected = false
@@ -86,12 +86,6 @@ export class AppComponent implements OnInit, OnChanges {
     this.configureMock()
 
     this.client.connect()
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['useMock']) {
-      this.configureMock()
-    }
   }
 
   configureMock() {

@@ -5,7 +5,13 @@
   <label for="light">Light</label>
 
   <br />
-  <input type="checkbox" [(ngModel)]="useMock" id="use-mock" name="use-mock" />
+  <input
+    type="checkbox"
+    [(ngModel)]="useMock"
+    id="use-mock"
+    name="use-mock"
+    (ngModelChange)="configureMock()"
+  />
   <label for="light">Use Mock</label>
 
   <div [ngClass]="[connected ? 'connected-box' : 'disconnected-box', 'connection-status-box']">
