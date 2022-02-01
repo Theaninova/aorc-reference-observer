@@ -22,6 +22,8 @@ This is a simple reference implementation of the AORC controller with little sty
 
 ### Advanced HUD
 
+[Demo Video](https://www.youtube.com/watch?v=_Nj0vCCIEK0)
+
 Add a browser source, then add this URL:
 
 [https://github.com/Theaninova/aorc-server/advanced-hud](https://github.com/Theaninova/aorc-server/advanced-hud)
