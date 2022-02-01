@@ -14,7 +14,7 @@
         "sourceType": "module",
         "project": [
           "tsconfig.json",
-          "e2e/tsconfig.e2e.json"
+          "tsconfig.app.json"
         ],
         "createDefaultProgram": true
       },
@@ -52,6 +52,7 @@
         "unicorn/no-nested-ternary": "off",
         "unicorn/better-regex": "off",
         "unicorn/no-null": "off",
+        "unicorn/no-array-for-each": "off",
 
         "jsdoc/no-types": "error",
         "jsdoc/require-param": "off",

@@ -1,0 +1,72 @@
+import {ClientData, StageUpdateData} from './type-definitions'
+
+export const DEFAULT_DATA: StageUpdateData = {
+  time: 0,
+  carData: {
+    position: [0, 0, 0],
+    rotation: [0, 0, 0],
+    velocity: [0, 0, 0],
+    clutchInput: 0,
+    throttleInput: 0,
+    steeringInput: 0,
+    brakeInput: 0,
+    handbrakeInput: 0,
+    tcsTriggered: false,
+    espTriggered: false,
+    absTriggered: false,
+    drivetrain: {
+      velocity: 0,
+      wheelTireVelocity: 0,
+      rpm: 0,
+      canStall: false,
+      isStalling: false,
+      torque: 0,
+      clutch: 0,
+      canShiftAgain: true,
+      currentGearRatio: 0,
+      currentPower: 0,
+      gear: 1,
+      isChangingGear: false,
+      shiftTriggered: false,
+      throttle: 0,
+    },
+  },
+}
+
+export const MOCK_DATA: ClientData<StageUpdateData>[] = [
+  {
+    user: 'MOCK-1',
+    data: {
+      time: 124.525_256_1,
+      carData: {
+        position: [0, 0, 0],
+        rotation: [0, 0, 0],
+        velocity: [0, 0, 0],
+        clutchInput: 0.66,
+        throttleInput: 0.5,
+        steeringInput: 0.2533,
+        brakeInput: 0.52,
+        handbrakeInput: 0.663_323_44,
+        tcsTriggered: false,
+        espTriggered: true,
+        absTriggered: false,
+        drivetrain: {
+          velocity: 24.256,
+          wheelTireVelocity: 25.256,
+          rpm: 2405.205,
+          canStall: false,
+          isStalling: false,
+          torque: 13.256,
+          clutch: 0.5,
+          canShiftAgain: true,
+          currentGearRatio: 1.5,
+          currentPower: 13.256,
+          gear: 1,
+          isChangingGear: false,
+          shiftTriggered: false,
+          throttle: 0.5,
+        },
+      },
+    },
+  },
+]

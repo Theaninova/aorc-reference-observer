@@ -1,6 +1,6 @@
 <div [ngClass]="theme">
   <div *ngIf="connected; else disconnected">
-    <car-data [carData]="user.carData"></car-data>
+    <car-data [carData]="carData"></car-data>
   </div>
   <ng-template #disconnected>
     <div [ngClass]="[connected ? 'connected-box' : 'disconnected-box', 'connection-status-box']">

@@ -1,18 +1,26 @@
 import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 
-import {AppComponent} from './app.component'
-import {CarDataComponent} from './car-data.component'
-import {DrivetrainDataComponent} from './drivetrain-data.component'
+import {DebugPageComponent} from './debug-page.component'
 import {FormsModule} from '@angular/forms'
-import {ControlViewsModule} from './control-views/control-views.module'
 import {UtilModule} from './util/util.module'
+import {RouterModule, Routes} from '@angular/router'
+import {PlayerHudComponent} from './player-hud.component'
+import {AppComponent} from './app.component'
+import {ProtocolService} from './protocol/protocol.service'
+import {DataComponentsModule} from './data-components/data-components.module'
+
+const routes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: DebugPageComponent},
+  {path: 'advanced-hud', component: PlayerHudComponent},
+]
 
 @NgModule({
-  declarations: [AppComponent, CarDataComponent, DrivetrainDataComponent],
-  imports: [BrowserModule, FormsModule, ControlViewsModule, UtilModule],
-  providers: [],
+  declarations: [DebugPageComponent, AppComponent, PlayerHudComponent],
+  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule, UtilModule, DataComponentsModule],
+  providers: [ProtocolService],
   bootstrap: [AppComponent],
-  exports: [CarDataComponent],
+  exports: [],
 })
 export class AppModule {}
