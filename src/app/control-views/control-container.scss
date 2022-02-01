@@ -9,6 +9,8 @@
   text-align: center;
   font-weight: bold;
   height: 22px;
+
+  color: var(--on-surface)
 }
 
 .control-label {
@@ -16,6 +18,8 @@
   align-items: center;
   justify-content: center;
   padding: 4px 0;
+
+  color: var(--on-surface);
 
   font-size: 1.1em;
   font-weight: bold;

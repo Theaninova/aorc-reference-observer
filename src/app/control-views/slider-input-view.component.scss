@@ -1,6 +1,10 @@
 .control-container {
   min-width: 70px;
   max-width: 90px;
+
+  background-color: var(--surface);
+  border-radius: 16px;
+  color: var(--on-surface);
 }
 
 .box-container {
@@ -33,7 +37,7 @@
 }
 
 .actual {
-  width: 16px;
+  width: 12px;
   grid-column: 1;
   grid-row: 1;
   justify-self: end;
