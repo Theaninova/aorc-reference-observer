@@ -22,7 +22,7 @@ const mockData: ClientData<StageUpdateData>[] = [
         drivetrain: {
           velocity: 24.256,
           wheelTireVelocity: 25.256,
-          rpm: 24.256,
+          rpm: 2405.205,
           canStall: false,
           isStalling: false,
           torque: 13.256,

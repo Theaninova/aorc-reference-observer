@@ -1,5 +1,4 @@
 <div class="control-container">
-  <div class="control-value">{{ _value | formatPercentage }}</div>
   <div class="overlaid">
     <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="half-circle grid-element">
       <!-- draw an arc from left to top to right -->
@@ -7,5 +6,15 @@
       <circle cx="120" cy="20" r="16" class="circle-control" [style.transform]="_transform" />
     </svg>
   </div>
-  <div class="control-label"><ng-content></ng-content></div>
+  <div class="control-label">
+    <div class="gears">
+      <div
+        class="gear"
+        [ngClass]="['gear', _gear === i ? 'gear-active' : 'gear-default']"
+        *ngFor="let label of ['R', 'N', '1', '2', '3', '4', '5']; index as i"
+      >
+        {{ label }}
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,12 +1,21 @@
 <div class="horizontal">
-  <steering-view [value]="_carData.steeringInput">Steering</steering-view>
+  <steering-view [value]="_carData.steeringInput" [gear]="_carData.drivetrain.gear"></steering-view>
+  <slider-input-view
+    [primary]="_carData.throttleInput"
+    [max]="9000"
+    [secondary]="_carData.drivetrain.rpm"
+    [value]="_carData.drivetrain.rpm"
+  >
+    RPM
+  </slider-input-view>
+  <slider-input-view [primary]="_carData.brakeInput">Brake</slider-input-view>
+  <slider-input-view [primary]="_carData.handbrakeInput">Handbrake</slider-input-view>
+  <slider-input-view [primary]="_carData.clutchInput" [secondary]="_carData.drivetrain.clutch"
+    >Clutch</slider-input-view
+  >
   <div class="vertical">
     <feature-bulb-view [isOn]="_carData.absTriggered">ABS</feature-bulb-view>
-    <feature-bulb-view [isOn]="_carData.tcsTriggered">TCS</feature-bulb-view>
-    <feature-bulb-view [isOn]="_carData.espTriggered">ESP</feature-bulb-view>
+    <feature-bulb-view [isOn]="_carData.drivetrain.canStall">WRN</feature-bulb-view>
+    <feature-bulb-view [isOn]="_carData.drivetrain.isStalling">STL</feature-bulb-view>
   </div>
-  <slider-input-view [value]="_carData.throttleInput"> Throttle </slider-input-view>
-  <slider-input-view [value]="_carData.brakeInput">Brake</slider-input-view>
-  <slider-input-view [value]="_carData.handbrakeInput">Handbrake</slider-input-view>
-  <slider-input-view [value]="_carData.clutchInput">Clutch</slider-input-view>
 </div>

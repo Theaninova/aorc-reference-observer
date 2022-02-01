@@ -1,7 +1,12 @@
 <div class="control-container">
-  <div class="control-value">{{ _value | formatPercentage }}</div>
-  <div class="box">
-    <div class="slider" [style.height.px]="_value * 200"></div>
+  <div class="control-value">{{ _value | formatFixed }} {{ unit }}</div>
+  <div class="box-container">
+    <div class="box wanted">
+      <div class="wanted-slider slider" [style.height.px]="_primary * 200"></div>
+    </div>
+    <div *ngIf="_secondary" class="box actual">
+      <div class="actual-slider slider" [style.height.px]="_secondary * 200"></div>
+    </div>
   </div>
   <div class="control-label"><ng-content></ng-content></div>
 </div>

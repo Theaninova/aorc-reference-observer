@@ -3,16 +3,30 @@ import {Component, Input} from '@angular/core'
 @Component({
   selector: 'slider-input-view',
   templateUrl: 'slider-input-view.component.html',
-  styleUrls: ['slider-input-view.component.scss', 'control-container.component.scss'],
+  styleUrls: ['slider-input-view.component.scss', 'control-container.scss'],
 })
 export class SliderInputViewComponent {
-  @Input() max!: number
+  @Input() max = 1
 
-  @Input() min!: number
+  @Input() min = 0
 
-  _value = 0
+  @Input() unit?: string
 
-  @Input() set value(value: number) {
+  _secondary?: number
+
+  _primary = 0
+
+  _value?: number
+
+  @Input() set value(value: number | undefined) {
     this._value = value
+  }
+
+  @Input() set primary(value: number) {
+    this._primary = value
+  }
+
+  @Input() set secondary(actual: number) {
+    this._secondary = (actual - this.min) / (this.max - this.min)
   }
 }

@@ -3,6 +3,12 @@
   max-width: 150px;
 }
 
+.box-container {
+  display: grid;
+  flex-direction: column;
+  width: 100%;
+}
+
 .box {
   border-radius: 8px;
   height: 200px;
@@ -19,8 +25,30 @@
   align-items: center;
 }
 
+.wanted {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  align-self: end;
+}
+
+.actual {
+  width: 16px;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  align-self: end;
+}
+
+.actual-slider {
+  background-color: var(--on-surface-variant);
+}
+
+.wanted-slider {
+  background-color: var(--primary);
+}
+
 .slider {
   width: 100%;
   transition: background-color 0.3s ease-in-out;
-  background-color: var(--primary);
 }
