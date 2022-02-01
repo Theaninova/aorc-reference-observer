@@ -2,8 +2,8 @@ import {Component, Input} from '@angular/core'
 
 @Component({
   selector: 'slider-input-view',
-  templateUrl: './slider-input-view.component.html',
-  styleUrls: ['./slider-input-view.component.scss'],
+  templateUrl: 'slider-input-view.component.html',
+  styleUrls: ['slider-input-view.component.scss', 'control-container.component.scss'],
 })
 export class SliderInputViewComponent {
   @Input() max!: number

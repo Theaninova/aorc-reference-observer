@@ -1,10 +1,12 @@
 <div class="horizontal">
+  <steering-view [value]="_carData.steeringInput">Steering</steering-view>
+  <div class="vertical">
+    <feature-bulb-view [isOn]="_carData.absTriggered">ABS</feature-bulb-view>
+    <feature-bulb-view [isOn]="_carData.tcsTriggered">TCS</feature-bulb-view>
+    <feature-bulb-view [isOn]="_carData.espTriggered">ESP</feature-bulb-view>
+  </div>
   <slider-input-view [value]="_carData.throttleInput"> Throttle </slider-input-view>
-  <slider-input-view [value]="_carData.steeringInput">Steering</slider-input-view>
   <slider-input-view [value]="_carData.brakeInput">Brake</slider-input-view>
-  <slider-input-view [value]="_carData.clutchInput">Clutch</slider-input-view>
   <slider-input-view [value]="_carData.handbrakeInput">Handbrake</slider-input-view>
-  <feature-bulb-view [isOn]="_carData.absTriggered">ABS</feature-bulb-view>
-  <feature-bulb-view [isOn]="_carData.tcsTriggered">TCS</feature-bulb-view>
-  <feature-bulb-view [isOn]="_carData.espTriggered">ESP</feature-bulb-view>
+  <slider-input-view [value]="_carData.clutchInput">Clutch</slider-input-view>
 </div>

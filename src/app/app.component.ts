@@ -56,7 +56,7 @@ export class AppComponent implements OnInit {
 
   theme!: 'theme-dark' | 'theme-light'
 
-  useMock = false
+  useMock = true
 
   ngOnInit() {
     this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-dark' : 'theme-light'

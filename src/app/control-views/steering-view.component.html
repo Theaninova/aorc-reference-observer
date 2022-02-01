@@ -1,0 +1,11 @@
+<div class="control-container">
+  <div class="control-value">{{ _value | formatPercentage }}</div>
+  <div class="overlaid">
+    <svg viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg" class="half-circle grid-element">
+      <!-- draw an arc from left to top to right -->
+      <path d="M 20 120 A 100 100 180 0 1 220 120" fill="none" stroke-linecap="round" stroke-width="40" />
+      <circle cx="120" cy="20" r="16" class="circle-control" [style.transform]="_transform" />
+    </svg>
+  </div>
+  <div class="control-label"><ng-content></ng-content></div>
+</div>

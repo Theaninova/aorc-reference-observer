@@ -4,3 +4,10 @@
   flex-wrap: wrap;
   justify-content: start;
 }
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: start;
+}

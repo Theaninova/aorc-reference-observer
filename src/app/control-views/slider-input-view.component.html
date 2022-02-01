@@ -1,7 +1,7 @@
-<div class="container">
-  <div class="value">{{ _value | formatPercentage }}</div>
+<div class="control-container">
+  <div class="control-value">{{ _value | formatPercentage }}</div>
   <div class="box">
     <div class="slider" [style.height.px]="_value * 200"></div>
   </div>
-  <div class="label"><ng-content></ng-content></div>
+  <div class="control-label"><ng-content></ng-content></div>
 </div>

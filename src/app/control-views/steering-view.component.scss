@@ -1,0 +1,21 @@
+.half-circle {
+  height: 200px;
+  width: auto;
+  stroke: var(--surface-variant);
+  fill: var(--primary)
+}
+
+.circle-control {
+  transform-origin: 120px 120px;
+}
+
+.overlaid {
+  display: grid;
+  align-items: center;
+  justify-items: end;
+}
+
+.grid-element {
+  grid-row: 1;
+  grid-column: 1;
+}
