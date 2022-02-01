@@ -1,0 +1,22 @@
+.connected-box {
+  background-color: var(--success-container);
+  color: var(--on-success-container)
+}
+
+.disconnected-box {
+  background-color: var(--error-container);
+  color: var(--on-error-container)
+}
+
+.error {
+  color: var(--error);
+  font-weight: bold;
+}
+
+.connection-status-box {
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: fit-content;
+  transition: all 0.3s ease-in-out;
+}

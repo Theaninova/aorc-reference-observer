@@ -12,6 +12,8 @@ export class SliderInputViewComponent {
 
   @Input() unit?: string
 
+  @Input() secondaryInput = false
+
   _secondary?: number
 
   _primary = 0

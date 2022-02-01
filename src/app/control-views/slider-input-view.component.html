@@ -5,7 +5,10 @@
       <div class="wanted-slider slider" [style.height.px]="_primary * 200"></div>
     </div>
     <div *ngIf="_secondary" class="box actual">
-      <div class="actual-slider slider" [style.height.px]="_secondary * 200"></div>
+      <div
+        [ngClass]="['slider', secondaryInput ? 'wanted-slider' : 'actual-slider']"
+        [style.height.px]="_secondary * 200"
+      ></div>
     </div>
   </div>
   <div class="control-label"><ng-content></ng-content></div>

@@ -22,8 +22,13 @@
   >
     RPM
   </slider-input-view>
-  <slider-input-view [primary]="_carData.brakeInput">Brake</slider-input-view>
-  <slider-input-view [primary]="_carData.handbrakeInput">Handbrake</slider-input-view>
+  <slider-input-view
+    [primary]="_carData.brakeInput"
+    [secondary]="_carData.handbrakeInput"
+    [secondaryInput]="true"
+  >
+    Brake</slider-input-view
+  >
   <slider-input-view [primary]="_carData.clutchInput" [secondary]="_carData.drivetrain.clutch"
     >Clutch</slider-input-view
   >

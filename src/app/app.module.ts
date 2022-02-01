@@ -13,6 +13,6 @@ import {UtilModule} from './util/util.module'
   imports: [BrowserModule, FormsModule, ControlViewsModule, UtilModule],
   providers: [],
   bootstrap: [AppComponent],
-  exports: [],
+  exports: [CarDataComponent],
 })
 export class AppModule {}

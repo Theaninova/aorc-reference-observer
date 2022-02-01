@@ -1,0 +1,11 @@
+<div [ngClass]="theme">
+  <div *ngIf="connected; else disconnected">
+    <car-data [carData]="user.carData"></car-data>
+  </div>
+  <ng-template #disconnected>
+    <div [ngClass]="[connected ? 'connected-box' : 'disconnected-box', 'connection-status-box']">
+      <div>{{ connected ? 'Connected' : 'Disconnected' }}</div>
+    </div>
+    <div class="error" *ngIf="error">Error: {{ error }}</div>
+  </ng-template>
+</div>
