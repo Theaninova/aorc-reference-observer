@@ -1,5 +1,19 @@
 <div class="horizontal">
-  <steering-view [value]="_carData.steeringInput" [gear]="_carData.drivetrain.gear"></steering-view>
+  <steering-view
+    [value]="_carData.steeringInput"
+    [gear]="_carData.drivetrain.gear"
+    [changingGear]="_carData.drivetrain.isChangingGear"
+  >
+    <div double class="horizontal">
+      <feature-bulb-view [isOn]="_carData.drivetrain.canStall">WRN</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.drivetrain.isStalling">STL</feature-bulb-view>
+    </div>
+    <div triple class="horizontal">
+      <feature-bulb-view [isOn]="_carData.absTriggered">ABS</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.tcsTriggered">TCS</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.espTriggered">ESP</feature-bulb-view>
+    </div>
+  </steering-view>
   <slider-input-view
     [primary]="_carData.throttleInput"
     [max]="9000"
@@ -13,9 +27,4 @@
   <slider-input-view [primary]="_carData.clutchInput" [secondary]="_carData.drivetrain.clutch"
     >Clutch</slider-input-view
   >
-  <div class="vertical">
-    <feature-bulb-view [isOn]="_carData.absTriggered">ABS</feature-bulb-view>
-    <feature-bulb-view [isOn]="_carData.drivetrain.canStall">WRN</feature-bulb-view>
-    <feature-bulb-view [isOn]="_carData.drivetrain.isStalling">STL</feature-bulb-view>
-  </div>
 </div>

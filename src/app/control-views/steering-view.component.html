@@ -5,12 +5,20 @@
       <path d="M 20 120 A 100 100 180 0 1 220 120" fill="none" stroke-linecap="round" stroke-width="40" />
       <circle cx="120" cy="20" r="16" class="circle-control" [style.transform]="_transform" />
     </svg>
+    <div class="content grid-element">
+      <div>
+        <ng-content select="[double]"></ng-content>
+      </div>
+      <div>
+        <ng-content select="[triple]"></ng-content>
+      </div>
+    </div>
   </div>
   <div class="control-label">
     <div class="gears">
       <div
         class="gear"
-        [ngClass]="['gear', _gear === i ? 'gear-active' : 'gear-default']"
+        [ngClass]="['gear', _gear === i ? (_changingGear ? 'gear-changing' : 'gear-active') : 'gear-default']"
         *ngFor="let label of ['R', 'N', '1', '2', '3', '4', '5']; index as i"
       >
         {{ label }}

@@ -1,6 +1,9 @@
 .half-circle {
   height: 200px;
   width: auto;
+  transition-property: stroke, fill;
+  transition: 0.2s ease-in-out;
+
   stroke: var(--surface-variant);
   fill: var(--primary)
 }
@@ -10,9 +13,21 @@
 }
 
 .overlaid {
+  height: 100%;
+  width: 100%;
   display: grid;
-  align-items: center;
+  align-items: end;
   justify-items: end;
+}
+
+.content {
+  width: 100%;
+  margin-bottom: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 .grid-element {
@@ -31,8 +46,8 @@
 }
 
 .gear {
-  height: 40px;
-  width: 40px;
+  height: 42px;
+  width: 42px;
   border-radius: 50%;
 
   transition: all 0.2s ease-in-out;
@@ -53,5 +68,10 @@
 .gear-default {
   background-color: var(--surface-variant);
   color: var(--on-surface-variant);
+}
+
+.gear-changing {
+  background-color: var(--tertiary);
+  color: var(--on-tertiary);
 }
 

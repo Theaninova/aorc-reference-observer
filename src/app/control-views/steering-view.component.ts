@@ -13,6 +13,8 @@ export class SteeringViewComponent {
 
   _gear!: number
 
+  _changingGear!: boolean
+
   constructor(readonly sanitizer: DomSanitizer) {}
 
   @Input() set value(value: number) {
@@ -22,5 +24,9 @@ export class SteeringViewComponent {
 
   @Input() set gear(gear: number) {
     this._gear = gear
+  }
+
+  @Input() set changingGear(changingGear: boolean) {
+    this._changingGear = changingGear
   }
 }
