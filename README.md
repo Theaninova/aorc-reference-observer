@@ -26,7 +26,7 @@ This is a simple reference implementation of the AORC controller with little sty
 
 Add a browser source, then add this URL:
 
-[https://github.com/Theaninova/aorc-server/advanced-hud](https://github.com/Theaninova/aorc-server/advanced-hud)
+[https://theaninova.github.io/aorc-reference-observer/advanced-hud](https://theaninova.github.io/aorc-reference-observer/advanced-hud)
 
 *Note: You still need the [client mod](https://github.com/Theaninova/aorc-server) and the
 [server](https://github.com/Theaninova/aorc-server) running to use this overlay.*
