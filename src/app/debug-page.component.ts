@@ -22,7 +22,7 @@ export class DebugPageComponent implements OnInit, OnDestroy {
 
   theme!: 'theme-dark' | 'theme-light'
 
-  useMock = true
+  useMock = false
 
   subscriptions: Subscription[] = []
 

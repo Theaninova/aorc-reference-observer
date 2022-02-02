@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core'
-import {Waypoints} from '../protocol/type-definitions'
+import {PositionData, Vector3, Waypoints} from '../protocol/type-definitions'
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser'
-import {max, maxBy, minBy} from 'lodash'
+import {maxBy, minBy} from 'lodash'
 
 /**
  *
@@ -41,7 +41,7 @@ function fixData(path: [number, number, number][]): [number, number, number][] {
 /**
  *
  */
-function minMax(path: [number, number, number][]): [[number, number], [number, number], [number, number]] {
+function minMax(path: Vector3[]): [[number, number], [number, number], [number, number]] {
   return [
     [minBy(path, p => p[0])![0], maxBy(path, p => p[0])![0]],
     [minBy(path, p => p[1])![1], maxBy(path, p => p[1])![1]],
@@ -52,7 +52,7 @@ function minMax(path: [number, number, number][]): [[number, number], [number, n
 /**
  *
  */
-function svgPathFromPoints(points: [number, number, number][], fraction: number, closed: boolean) {
+function svgPathFromPoints(points: Vector3[], fraction: number, closed: boolean) {
   return (
     `M${points[0][0].toFixed(fraction)} ${points[0][1].toFixed(fraction)}` +
     points
@@ -71,19 +71,22 @@ function svgPathFromPoints(points: [number, number, number][], fraction: number,
 export class MinimapComponent {
   svg?: SafeHtml
 
-  @Input() strokeWidth = 30
+  @Input() strokeWidth = 100
 
-  @Input() playerSize = 20
+  // reset distance is 17
+  streetWidth = 17
+
+  @Input() playerSize = 3
 
   @Input() precision = 2
 
-  minimapPath!: string
-
-  minimapOutlinePath!: string
+  minimapPathData!: string
 
   playerPath!: string
 
   viewBox!: string
+
+  @Input() mode: 'player' | 'full' = 'full'
 
   constructor(readonly sanitizer: DomSanitizer) {}
 
@@ -95,31 +98,54 @@ export class MinimapComponent {
     this.viewBox = `${xMin.toFixed(this.precision)} ${yMin.toFixed(this.precision)} ${(xMax - xMin).toFixed(
       this.precision,
     )} ${(yMax - yMin).toFixed(this.precision)}`
-    const pathData = svgPathFromPoints(path, this.precision, false)
-
-    this.minimapPath = `<path d="${pathData}" style="stroke: var(--on-surface-variant)" fill="none" stroke-linecap="round" stroke-width="${
-      this.strokeWidth * 0.4
-    }"></path>`
-    this.minimapOutlinePath = `<path d="${pathData}" style="stroke: var(--surface-variant)" fill="none" stroke-linecap="round" stroke-width="${this.strokeWidth}"></path>`
+    this.minimapPathData = svgPathFromPoints(path, this.precision, false)
 
     this.makeSvg()
   }
 
-  @Input() set playerPos(pos: [number, number, number] | undefined) {
-    // make an svg circle at the player pos
-    if (!pos) return
+  @Input() set playerPos(pos: PositionData | undefined) {
+    if (!pos || pos.position?.length !== 3 || pos.rotation.length !== 3) return
 
-    const [x, , y] = pos.map(p => p.toFixed(this.precision))
-    this.playerPath = `<circle cx="${x}" cy="${-y}" r="${
-      this.playerSize
-    }" style="fill: var(--primary)"></circle>`
+    const [x, , y] = pos.position.map(p => p.toFixed(this.precision))
+    const rotDegZ = pos.rotation.map(r => r.toFixed(this.precision))[1]
+    this.playerPath = `
+      <path d="M0 -24L15 16L0 0L-15 16Z"
+            style="fill: var(--tertiary)"
+            transform="translate(${x},${-y})
+            scale(${this.playerSize})
+            rotate(${rotDegZ})">
+      </path>`
 
     this.makeSvg()
   }
 
   makeSvg() {
+    const minimapPath = `
+      <path d="${this.minimapPathData}"
+            style="stroke: var(--on-surface-variant)"
+            stroke-linejoin="round"
+            fill="none" stroke-linecap="round"
+            stroke-width="${this.streetWidth}">
+      </path>
+    `
+    const minimapOutlinePath = `
+      <path d="${this.minimapPathData}"
+            style="stroke: var(--surface-variant)"
+            stroke-linejoin="round"
+            fill="none"
+            stroke-linecap="round"
+            stroke-width="${this.strokeWidth}">
+      </path>`
+
     this.svg = this.sanitizer.bypassSecurityTrustHtml(
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${this.viewBox}" style="overflow: visible; width: 90%; height: 90%">${this.minimapOutlinePath}${this.minimapPath}${this.playerPath}</svg>`,
+      `
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="${this.viewBox}"
+             style="overflow: visible; width: 90%; height: 90%">
+          ${minimapOutlinePath}
+          ${minimapPath}
+          ${this.playerPath}
+        </svg>`,
     )
   }
 }

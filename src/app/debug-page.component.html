@@ -37,7 +37,7 @@
         <div>Time: {{ user.value.time | formatTimeString }}</div>
         <minimap-view
           [waypoints]="(useMock ? mockWaypoints : waypoints).get(user.key)"
-          [playerPos]="user.value.carData?.positionData?.position"
+          [playerPos]="user.value.carData?.positionData"
         ></minimap-view>
         <div *ngIf="user.value.carData">
           <h2>Car Data</h2>
