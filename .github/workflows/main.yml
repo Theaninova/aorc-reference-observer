@@ -33,6 +33,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
       - run: npm run build:gh-pages
+      # This ensures that the Angular router works
+      # https://blog.bitsrc.io/deploy-your-angular-project-to-github-pages-7cbacb96f35b
+      - run: cp dist/index.html dist/404.html
       - name: Store build dir
         uses: actions/upload-artifact@v2
         with:
