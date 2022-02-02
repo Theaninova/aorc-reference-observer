@@ -74,6 +74,7 @@
           "error",
           "always"
         ],
+        "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@angular-eslint/use-lifecycle-interface": "error",
 

@@ -35,11 +35,15 @@
       <h1>{{ user.key }}</h1>
       <div *ngIf="user.value !== null; else noData">
         <div>Time: {{ user.value.time | formatTimeString }}</div>
+        <minimap-view
+          [waypoints]="(useMock ? mockWaypoints : waypoints).get(user.key)"
+          [playerPos]="user.value.carData?.positionData?.position"
+        ></minimap-view>
         <div *ngIf="user.value.carData">
           <h2>Car Data</h2>
           <car-data [carData]="user.value.carData"></car-data>
           <h2>Drivetrain</h2>
-          <drivetrain-data [drivetrain]="user.value.carData.drivetrain"></drivetrain-data>
+          <!--<drivetrain-data [drivetrain]="user.value.carData?.drivetrain"></drivetrain-data>-->
         </div>
       </div>
       <ng-template #noData>

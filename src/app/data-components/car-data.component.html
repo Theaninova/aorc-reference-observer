@@ -1,35 +1,37 @@
 <div class="horizontal">
   <steering-view
-    [value]="_carData.steeringInput"
-    [gear]="_carData.drivetrain.gear"
-    [changingGear]="_carData.drivetrain.isChangingGear"
+    [value]="_carData.inputData?.steeringInput || 0"
+    [gear]="_carData.drivetrain?.gear || 1"
+    [changingGear]="_carData.drivetrain?.isChangingGear"
   >
     <div double class="horizontal">
-      <feature-bulb-view [isOn]="_carData.drivetrain.canStall">WRN</feature-bulb-view>
-      <feature-bulb-view [isOn]="_carData.drivetrain.isStalling">STL</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.drivetrain?.canStall">WRN</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.drivetrain?.isStalling">STL</feature-bulb-view>
     </div>
     <div triple class="horizontal">
-      <feature-bulb-view [isOn]="_carData.absTriggered">ABS</feature-bulb-view>
-      <feature-bulb-view [isOn]="_carData.tcsTriggered">TCS</feature-bulb-view>
-      <feature-bulb-view [isOn]="_carData.espTriggered">ESP</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.inputData?.absTriggered">ABS</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.inputData?.tcsTriggered">TCS</feature-bulb-view>
+      <feature-bulb-view [isOn]="_carData.inputData?.espTriggered">ESP</feature-bulb-view>
     </div>
   </steering-view>
   <slider-input-view
-    [primary]="_carData.throttleInput"
+    [primary]="_carData.inputData?.throttleInput || 0"
     [max]="9000"
-    [secondary]="_carData.drivetrain.rpm"
-    [value]="_carData.drivetrain.rpm"
+    [secondary]="_carData.drivetrain?.rpm || 0"
+    [value]="_carData.drivetrain?.rpm || 0"
   >
     RPM
   </slider-input-view>
   <slider-input-view
-    [primary]="_carData.brakeInput"
-    [secondary]="_carData.handbrakeInput"
+    [primary]="_carData.inputData?.brakeInput || 0"
+    [secondary]="_carData.inputData?.handbrakeInput || 0"
     [secondaryInput]="true"
   >
     Brake</slider-input-view
   >
-  <slider-input-view [primary]="_carData.clutchInput" [secondary]="_carData.drivetrain.clutch"
+  <slider-input-view
+    [primary]="_carData.inputData?.clutchInput || 0"
+    [secondary]="_carData.drivetrain?.clutch || 0"
     >Clutch</slider-input-view
   >
 </div>

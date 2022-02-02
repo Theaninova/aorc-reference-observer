@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {io, Socket} from 'socket.io-client'
 import {fromEventPattern, Observable} from 'rxjs'
-import {ClientData, StageUpdateData} from './type-definitions'
+import {ClientData, StageUpdateData, Waypoints} from './type-definitions'
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,8 @@ export class ProtocolService {
   userLeft!: Observable<ClientData>
 
   connectError!: Observable<Error>
+
+  waypoints!: Observable<ClientData<Waypoints>>
 
   constructor() {
     this.client = io('http://localhost:4593/controllers', {
@@ -48,6 +50,11 @@ export class ProtocolService {
     this.stageUpdates = fromEventPattern<ClientData<StageUpdateData>>(
       handler => this.client.on('stageUpdate', handler),
       handler => this.client.off('stageUpdate', handler),
+    )
+
+    this.waypoints = fromEventPattern<ClientData<Waypoints>>(
+      handler => this.client.on('waypointsGathered', handler),
+      handler => this.client.off('waypointsGathered', handler),
     )
 
     this.client.connect()

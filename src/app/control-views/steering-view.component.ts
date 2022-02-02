@@ -26,7 +26,7 @@ export class SteeringViewComponent {
     this._gear = gear
   }
 
-  @Input() set changingGear(changingGear: boolean) {
-    this._changingGear = changingGear
+  @Input() set changingGear(changingGear: boolean | undefined) {
+    this._changingGear = changingGear ?? false
   }
 }

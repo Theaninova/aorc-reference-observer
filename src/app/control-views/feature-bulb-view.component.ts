@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core'
 export class FeatureBulbViewComponent {
   _isOn!: boolean
 
-  @Input() set isOn(value: boolean) {
-    this._isOn = value
+  @Input() set isOn(value: boolean | undefined) {
+    this._isOn = value || false
   }
 }

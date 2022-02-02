@@ -1,9 +1,12 @@
 export type Vector3 = [number, number, number] // float
 
-export interface CarData {
+export interface PositionData {
   position: Vector3
   rotation: Vector3
   velocity: Vector3
+}
+
+export interface InputData {
   throttleInput: number // float
   steeringInput: number // float
   brakeInput: number // float
@@ -12,7 +15,18 @@ export interface CarData {
   absTriggered: boolean
   tcsTriggered: boolean
   espTriggered: boolean
-  drivetrain: DrivetrainData
+}
+
+export interface CarData {
+  positionData?: PositionData
+  inputData?: InputData
+  brakeData?: BrakeData
+  drivetrain?: DrivetrainData
+}
+
+export interface BrakeData {
+  temperatureBack: number // float
+  temperatureFront: number // float
 }
 
 export interface DrivetrainData {
@@ -31,6 +45,8 @@ export interface DrivetrainData {
   velocity: number // float
   isStalling: boolean
 }
+
+export type Waypoints = Vector3[]
 
 export interface StageUpdateData {
   time: number // seconds fraction
