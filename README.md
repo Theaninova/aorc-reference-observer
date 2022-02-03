@@ -37,6 +37,9 @@ Add a browser source, then add this URL:
 
 * light & dark theme!
 * Gorgeous UI
+* Adaptive theme with dark mode
+  * Theme adapts to the current level you are in
+  * Optionally, specify the theme you want to use
 
 ##### Inputs
 
@@ -79,13 +82,13 @@ Add a browser source, then add this URL:
 
 You can configure the HUD by adding the following query parameters
 
-| Parameter          | Description                                                           | Values                                             |
-|--------------------|-----------------------------------------------------------------------|----------------------------------------------------|
-| `theme`            | The theme to use.                                                     | `[none]`, `cherry`                                 |
-| `dark-mode`        | Weather to enable dark mode (default is true)                         | `true`, `false`                                    |
-| `steering-content` | The content to show in the steering wheel.                            | `map`, `status`                                    |
-| `map-zoom`         | Controls the size of the map in in-game units, with the player at 0,0 | `[originX (left)]-[originY(top)]-[width]-[height]` |
-| `player-zoom`      | Controls the relative zoom factor of the player                       | `[number]`                                         |
+| Parameter          | Description                                                           | Values                                                       |
+|--------------------|-----------------------------------------------------------------------|--------------------------------------------------------------|
+| `theme`            | Specify a theme override                                              | `default`, `cherry`, `finland`, `nasu`, `norway`, `sardinia` |
+| `dark-mode`        | Weather to enable dark mode (default is true)                         | `true`, `false`                                              |
+| `steering-content` | The content to show in the steering wheel.                            | `map`, `status`                                              |
+| `map-zoom`         | Controls the size of the map in in-game units, with the player at 0,0 | `[originX (left)]-[originY(top)]-[width]-[height]`           |
+| `player-zoom`      | Controls the relative zoom factor of the player                       | `[number]`                                                   |
 
 
 
