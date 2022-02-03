@@ -1,7 +1,7 @@
 <div [ngClass]="theme">
   <div *ngIf="connected; else disconnected">
     <div class="horizontal">
-      <car-data [carData]="carData" [waypoints]="waypoints"></car-data>
+      <car-data [carData]="carData" [waypoints]="waypoints" [steeringContent]="steeringContent"></car-data>
     </div>
   </div>
   <ng-template #disconnected>

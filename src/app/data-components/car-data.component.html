@@ -3,6 +3,7 @@
     [value]="_carData.inputData?.steeringInput || 0"
     [gear]="_carData.drivetrain?.gear || 1"
     [changingGear]="_carData.drivetrain?.isChangingGear"
+    [inside]="steeringContent"
   >
     <div double class="horizontal">
       <feature-bulb-view [isOn]="_carData.drivetrain?.canStall">WRN</feature-bulb-view>

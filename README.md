@@ -33,3 +33,27 @@ Add a browser source, then add this URL:
 
 ![](about-images/advanced-hud.png)
 
+#### Configuration
+
+You can configure the HUD by adding the following query parameters
+
+<!-- Markdown table with the parameters `theme` and `steering-content` -->
+
+
+| Parameter          | Description                                | Values          |
+|--------------------|--------------------------------------------|-----------------|
+| `theme`            | The theme to use.                          | `light`, `dark` |
+| `steering-content` | The content to show in the steering wheel. | `map`, `status` |
+
+Query parameters are used like this:
+`[original URL]?[parameter name]=[parameter value]`
+
+You can add additional parameters like this
+`[original URL]?[parameter name]=[parameter value]&[parameter name]=[parameter value]`
+
+For example to have a light HUD with a map, you can add the following query parameter:
+`[original URL]?theme=light&steering-content=map`
+
+*Note: The parameters are usually quite forgiving, for example with the theme you can
+use anything that contains the word `light` or `dark`. But be aware that this behavior
+might change in the future if more complex systems are added*
