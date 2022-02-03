@@ -147,24 +147,32 @@ export class MinimapComponent {
       `
     } else if (this.mode === 'player') {
       this.playerPath = `
-        <path d="M0 -24L15 16L0 0L-15 16Z"
+        <path d="M0 -24L15 16L0 ${2}L-15 16Z"
               id="playerPath"
-              style="fill: #ffffff; mix-blend-mode: difference"
+              style="fill: var(--primary); stroke: var(--primary)"
               stroke-width="${this.streetWidth / this.playerSize}"
               stroke-linejoin="round"
-              fill="none"
               stroke-linecap="round"
               transform="scale(${this.playerSize})">
         </path>`
       this.velocityPath = `
         <path d="M0 1L${xVel} ${-yVel}"
+              stroke-width="${this.streetWidth * 3}"
+              stroke-linejoin="round"
+              fill="none"
+              stroke-linecap="round"
+              style="stroke: var(--primary)"
+              transform="rotate(${rotDegZ})">
+        </path>
+        <path d="M0 1L${xVel} ${-yVel}"
               stroke-width="${this.streetWidth}"
               stroke-linejoin="round"
               fill="none"
               stroke-linecap="round"
-              style="stroke: #ffffff; mix-blend-mode: difference"
+              style="stroke: var(--surface)"
               transform="rotate(${rotDegZ})">
         </path>
+
       `
     }
 
@@ -184,7 +192,7 @@ export class MinimapComponent {
 
     const minimapPath = `
       <path d="${this.minimapPathData}"
-            style="stroke: var(--${mode ? 'primary' : 'surface-variant'})"
+            style="stroke: var(${mode ? '--surface' : '--surface-variant'})"
             stroke-linejoin="round"
             fill="none" stroke-linecap="round"
             stroke-width="${this.streetWidth}"
@@ -193,7 +201,7 @@ export class MinimapComponent {
     `
     const resetOutlinePath = `
       <path d="${this.minimapPathData}"
-            style="stroke: var(--${mode ? 'surface-variant' : 'on-surface-variant'})"
+            style="stroke: var(${mode ? '--surface-variant' : '--on-surface-variant'})"
             stroke-linejoin="round"
             fill="none"
             stroke-linecap="round"

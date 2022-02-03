@@ -330,7 +330,7 @@ export const MOCK_DATA: ClientData<StageUpdateData>[] = [
       time: 124.525_256_1,
       carData: {
         positionData: {
-          position: [0, 0, 0],
+          position: [28.942_916_9, 7.224_914_55, 180.574_158],
           rotation: [0, 0, 89],
           velocity: [15, 17, 17],
         },
