@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core'
+import {Component, OnDestroy, OnInit} from '@angular/core'
 import {DEFAULT_DATA, MOCK_WAYPOINTS} from './protocol/mock-data'
 import {CarData, Waypoints} from './protocol/type-definitions'
 import {ProtocolService} from './protocol/protocol.service'
@@ -20,7 +20,9 @@ export class PlayerHudComponent implements OnInit, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   carData: CarData = DEFAULT_DATA.carData!
 
-  theme: 'theme-dark' | 'theme-light' = 'theme-dark'
+  theme = 'default'
+
+  darkMode = true
 
   steeringContent: 'stacked' | 'map' = 'map'
 
@@ -31,8 +33,11 @@ export class PlayerHudComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.push(
       this.route.queryParams.subscribe(parameters => {
+        if (parameters['dark-mode']) {
+          this.darkMode = parameters['dark-mode'] !== 'false'
+        }
         if (parameters['theme']) {
-          this.theme = /light/.test(parameters['theme']) ? 'theme-light' : 'theme-dark'
+          this.theme = parameters['theme']
         }
         if (parameters['steering-content']) {
           this.steeringContent = parameters['steering-content'] === 'map' ? 'map' : 'stacked'

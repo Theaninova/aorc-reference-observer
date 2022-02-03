@@ -33,17 +33,61 @@ Add a browser source, then add this URL:
 
 ![](about-images/advanced-hud.png)
 
+#### Features
+
+* light & dark theme!
+* Gorgeous UI
+
+##### Inputs
+
+* Steering
+* Throttle
+* Brake
+* Handbrake
+* Clutch
+
+##### In-game data
+
+* RPM & RPM vs Throttle
+* Clutch position
+* Gear position & Switching time
+* ABS
+* TCS & EBS (seems to be non-functional)
+* Stalling (seems to be non-functional)
+
+##### Minimap
+
+* Player Position
+* Player Direction
+* Player Velocity & Direction *Tip for interpretation:*
+  * If the velocity indicators sways off from the player direction, you are probably
+    sliding
+  * The length of the velocity indicator is not arbitrarily chosen. It's exactly scaled
+    to the map, so it's the exact point where you would be in one second if you kept
+    the current momentum
+  * Personal observation: The tip of the indicator never went beyond the map boundaries,
+    usually it going beyond the map boundaries meant I was going off the map
+* Map boundaries
+  * Approximate street width (About 1/3rd of the total playable width)
+  * Exact width of the safe zones, aka the grass areas you can still go on without
+    getting reset. Please note that the safe zones are only somewhat exact, because
+    in-game they are interpreted as spheres r=17 at the waypoints, and not as a continuous
+    path like on the minimap
+  * Exact size and position of manually placed reset zones (WIP)
+
 #### Configuration
 
 You can configure the HUD by adding the following query parameters
 
-<!-- Markdown table with the parameters `theme` and `steering-content` -->
+| Parameter          | Description                                                           | Values                                             |
+|--------------------|-----------------------------------------------------------------------|----------------------------------------------------|
+| `theme`            | The theme to use.                                                     | `[none]`, `cherry`                                 |
+| `dark-mode`        | Weather to enable dark mode (default is true)                         | `true`, `false`                                    |
+| `steering-content` | The content to show in the steering wheel.                            | `map`, `status`                                    |
+| `map-zoom`         | Controls the size of the map in in-game units, with the player at 0,0 | `[originX (left)]-[originY(top)]-[width]-[height]` |
+| `player-zoom`      | Controls the relative zoom factor of the player                       | `[number]`                                         |
 
 
-| Parameter          | Description                                | Values          |
-|--------------------|--------------------------------------------|-----------------|
-| `theme`            | The theme to use.                          | `light`, `dark` |
-| `steering-content` | The content to show in the steering wheel. | `map`, `status` |
 
 Query parameters are used like this:
 `[original URL]?[parameter name]=[parameter value]`
