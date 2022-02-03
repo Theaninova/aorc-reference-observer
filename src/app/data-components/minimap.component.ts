@@ -154,7 +154,7 @@ export class MinimapComponent {
               fill="none"
               stroke-linecap="round"
               style="stroke: var(--primary)"
-              transform="rotate(${rotDegZ})">
+              transform="rotate(${-rotDegZ})">
         </path>
         <path d="M0 1L${xVel} ${-yVel}"
               stroke-width="${this.velocitySize}"
@@ -162,7 +162,7 @@ export class MinimapComponent {
               fill="none"
               stroke-linecap="round"
               style="stroke: var(--surface)"
-              transform="rotate(${rotDegZ})">
+              transform="rotate(${-rotDegZ})">
         </path>
 
       `
@@ -182,7 +182,7 @@ export class MinimapComponent {
 
     const minimapPath = `
       <path d="${this.minimapPathData}"
-            style="stroke: var(${mode ? '--surface' : '--surface-variant'})"
+            style="stroke: var(${mode ? '--surface-variant' : '--surface-variant'})"
             stroke-linejoin="round"
             fill="none" stroke-linecap="round"
             stroke-width="${this.streetWidth}"
@@ -191,7 +191,7 @@ export class MinimapComponent {
     `
     const resetOutlinePath = `
       <path d="${this.minimapPathData}"
-            style="stroke: var(${mode ? '--surface-variant' : '--on-surface-variant'})"
+            style="stroke: var(${mode ? '--surface' : '--on-surface-variant'})"
             stroke-linejoin="round"
             fill="none"
             stroke-linecap="round"
