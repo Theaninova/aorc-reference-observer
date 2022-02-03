@@ -73,20 +73,32 @@ export class MinimapComponent {
 
   @Input() strokeWidth = 100
 
-  // reset distance is 17
-  streetWidth = 17
+  resetDistance = 17
+
+  // the road is approximately a third of the reset distance
+  streetWidth = (this.resetDistance * 2) / 3
 
   @Input() playerSize = 3
 
   @Input() precision = 2
 
+  @Input() mapZoom = 5
+
   minimapPathData!: string
 
   playerPath!: string
 
+  velocityPath!: string
+
   viewBox!: string
 
-  @Input() mode: 'player' | 'full' = 'full'
+  pos: PositionData = {
+    position: [0, 0, 0],
+    velocity: [0, 0, 0],
+    rotation: [0, 0, 0],
+  }
+
+  @Input() mode: 'player' | 'full' = 'player'
 
   constructor(readonly sanitizer: DomSanitizer) {}
 
@@ -106,35 +118,99 @@ export class MinimapComponent {
   @Input() set playerPos(pos: PositionData | undefined) {
     if (!pos || pos.position?.length !== 3 || pos.rotation.length !== 3) return
 
+    this.pos = pos
     const [x, , y] = pos.position.map(p => p.toFixed(this.precision))
     const rotDegZ = pos.rotation.map(r => r.toFixed(this.precision))[1]
-    this.playerPath = `
-      <path d="M0 -24L15 16L0 0L-15 16Z"
-            style="fill: var(--tertiary)"
-            transform="translate(${x},${-y})
-            scale(${this.playerSize})
-            rotate(${rotDegZ})">
-      </path>`
+    const [xVel, , yVel] = pos.velocity.map(v => (v * 4).toFixed(this.precision))
+
+    if (this.mode === 'full') {
+      this.playerPath = `
+        <path d="M0 -24L15 16L0 0L-15 16Z"
+              id="playerPath"
+              style="fill: var(--tertiary)"
+              stroke-width="${this.streetWidth / this.playerSize}"
+              stroke-linejoin="round"
+              fill="none"
+              stroke-linecap="round"
+              transform="translate(${x},${-y}) scale(${this.playerSize}) rotate(${rotDegZ})">
+        </path>`
+
+      this.velocityPath = `
+        <path d="M0 1L${xVel} ${-yVel}"
+              transform="translate(${x},${-y})"
+              stroke-width="${this.streetWidth}"
+              stroke-linejoin="round"
+              fill="none"
+              stroke-linecap="round"
+              style="stroke: #ffffff; mix-blend-mode: difference">
+        </path>
+      `
+    } else if (this.mode === 'player') {
+      this.playerPath = `
+        <path d="M0 -24L15 16L0 0L-15 16Z"
+              id="playerPath"
+              style="fill: #ffffff; mix-blend-mode: difference"
+              stroke-width="${this.streetWidth / this.playerSize}"
+              stroke-linejoin="round"
+              fill="none"
+              stroke-linecap="round"
+              transform="scale(${this.playerSize})">
+        </path>`
+      this.velocityPath = `
+        <path d="M0 1L${xVel} ${-yVel}"
+              stroke-width="${this.streetWidth}"
+              stroke-linejoin="round"
+              fill="none"
+              stroke-linecap="round"
+              style="stroke: #ffffff; mix-blend-mode: difference"
+              transform="rotate(${rotDegZ})">
+        </path>
+      `
+    }
 
     this.makeSvg()
   }
 
   makeSvg() {
+    // scale(${this.mapZoom}) rotate(${this.pos.rotation[1].toFixed(
+    //             this.precision,
+    //           )})
+    const mode = this.mode === 'player'
+    const rotDegZ = this.pos.rotation.map(r => r.toFixed(this.precision))[1]
+    const [x, , y] = this.pos.position.map(p => p.toFixed(this.precision))
+    const transform = !mode
+      ? ''
+      : `transform="scale(${this.mapZoom}) rotate(${-rotDegZ}) translate(${-x},${y})"`
+
     const minimapPath = `
       <path d="${this.minimapPathData}"
-            style="stroke: var(--on-surface-variant)"
+            style="stroke: var(--${mode ? 'primary' : 'surface-variant'})"
             stroke-linejoin="round"
             fill="none" stroke-linecap="round"
-            stroke-width="${this.streetWidth}">
+            stroke-width="${this.streetWidth}"
+            ${transform}>
       </path>
     `
-    const minimapOutlinePath = `
+    const resetOutlinePath = `
       <path d="${this.minimapPathData}"
-            style="stroke: var(--surface-variant)"
+            style="stroke: var(--${mode ? 'surface-variant' : 'on-surface-variant'})"
             stroke-linejoin="round"
             fill="none"
             stroke-linecap="round"
-            stroke-width="${this.strokeWidth}">
+            stroke-width="${this.resetDistance * 2}"
+            ${transform}>
+      </path>`
+
+    const minimapOutlinePath = !mode
+      ? ''
+      : `
+      <path d="${this.minimapPathData}"
+            style="stroke: var(${mode ? 'primary' : 'surface-variant'})"
+            stroke-linejoin="round"
+            fill="none"
+            stroke-linecap="round"
+            stroke-width="${this.strokeWidth}"
+            ${transform}>
       </path>`
 
     this.svg = this.sanitizer.bypassSecurityTrustHtml(
@@ -143,8 +219,10 @@ export class MinimapComponent {
              viewBox="${this.viewBox}"
              style="overflow: visible; width: 90%; height: 90%">
           ${minimapOutlinePath}
+          ${resetOutlinePath}
           ${minimapPath}
           ${this.playerPath}
+          ${this.velocityPath}
         </svg>`,
     )
   }
