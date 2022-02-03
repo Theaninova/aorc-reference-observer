@@ -1,5 +1,4 @@
 .minimap {
-  overflow: hidden;
   transition-property: width;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
@@ -9,6 +8,6 @@
   align-items: center;
   justify-content: center;
 
-  height: 270px;
-  width: fit-content;
+  height: 100%;
+  width: 100%;
 }

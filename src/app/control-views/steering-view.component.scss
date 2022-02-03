@@ -1,6 +1,6 @@
 .half-circle {
-  height: 200px;
-  width: auto;
+  height: 100%;
+  width: 350px;
   transition-property: stroke, fill;
   transition: 0.2s ease-in-out;
 
@@ -22,12 +22,25 @@
 
 .content {
   width: 100%;
-  margin-bottom: 8px;
+  height: 200px;
+}
+
+.buttons-content {
+  width: 100%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
   align-content: center;
-  justify-content: center;
+  justify-content: flex-end;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  // clip-path: path('M 70 170 A 105 105 180 0 1 280 170L280 190L70 190Z');
+  overflow: hidden;
+  clip-path: circle(105px at 175px 170px);
 }
 
 .grid-element {

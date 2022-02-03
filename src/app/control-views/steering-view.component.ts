@@ -15,6 +15,8 @@ export class SteeringViewComponent {
 
   _changingGear!: boolean
 
+  @Input() inside: 'stacked' | 'map' = 'map'
+
   constructor(readonly sanitizer: DomSanitizer) {}
 
   @Input() set value(value: number) {

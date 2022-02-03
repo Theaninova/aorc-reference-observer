@@ -5,12 +5,17 @@
       <path d="M 20 120 A 100 100 180 0 1 220 120" fill="none" stroke-linecap="round" stroke-width="40" />
       <circle cx="120" cy="20" r="16" class="circle-control" [style.transform]="_transform" />
     </svg>
-    <div class="content grid-element">
-      <div>
-        <ng-content select="[double]"></ng-content>
+    <div [ngSwitch]="inside" class="grid-element content">
+      <div class="buttons-content" *ngSwitchCase="'stacked'">
+        <div>
+          <ng-content select="[double]"></ng-content>
+        </div>
+        <div>
+          <ng-content select="[triple]"></ng-content>
+        </div>
       </div>
-      <div>
-        <ng-content select="[triple]"></ng-content>
+      <div *ngSwitchCase="'map'" class="map-container">
+        <ng-content select="[map]"></ng-content>
       </div>
     </div>
   </div>

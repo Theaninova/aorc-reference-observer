@@ -1,8 +1,7 @@
 <div [ngClass]="theme">
   <div *ngIf="connected; else disconnected">
     <div class="horizontal">
-      <car-data [carData]="carData"></car-data>
-      <minimap-view [waypoints]="waypoints" [playerPos]="carData.positionData"></minimap-view>
+      <car-data [carData]="carData" [waypoints]="waypoints"></car-data>
     </div>
   </div>
   <ng-template #disconnected>

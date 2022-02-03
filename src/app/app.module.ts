@@ -9,6 +9,7 @@ import {PlayerHudComponent} from './player-hud.component'
 import {AppComponent} from './app.component'
 import {ProtocolService} from './protocol/protocol.service'
 import {DataComponentsModule} from './data-components/data-components.module'
+import {ControlViewsModule} from './control-views/control-views.module'
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -18,7 +19,14 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [DebugPageComponent, AppComponent, PlayerHudComponent],
-  imports: [RouterModule.forRoot(routes), BrowserModule, FormsModule, UtilModule, DataComponentsModule],
+  imports: [
+    RouterModule.forRoot(routes),
+    BrowserModule,
+    FormsModule,
+    UtilModule,
+    DataComponentsModule,
+    ControlViewsModule,
+  ],
   providers: [ProtocolService],
   bootstrap: [AppComponent],
   exports: [],

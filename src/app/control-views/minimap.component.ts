@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core'
 import {PositionData, Vector3, Waypoints} from '../protocol/type-definitions'
 import {DomSanitizer, SafeHtml} from '@angular/platform-browser'
-import {maxBy, minBy} from 'lodash'
+import {clamp, maxBy, minBy} from 'lodash'
 
 /**
  *
@@ -37,6 +37,19 @@ function fixData(path: [number, number, number][]): [number, number, number][] {
 /*function scale(path: [number, number, number][], scale: number): [number, number, number][] {
   return path.map(([x, y, z]) => [x * scale, y * scale, z * scale])
 }*/
+
+/**
+ *
+ */
+function length(v: [number, number, number]): number {
+  return Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2])
+}
+
+/**
+ */
+function mapRange(value: number, oldMin: number, oldMax: number, newMin: number, newMax: number): number {
+  return ((value - oldMin) * (newMax - newMin)) / (oldMax - oldMin) + newMin
+}
 
 /**
  *
@@ -83,6 +96,10 @@ export class MinimapComponent {
   @Input() playerPointSize = 15
 
   @Input() precision = 2
+
+  @Input() speedRange = [5, 100]
+
+  @Input() mapScales = [5, 0.4]
 
   playerMapArea: [number, number, number, number] = [-100, -250, 200, 300]
 
@@ -178,6 +195,17 @@ export class MinimapComponent {
     const mode = this.mode === 'player'
     const rotDegZ = this.pos.rotation.map(r => r.toFixed(this.precision))[1]
     const [x, , y] = this.pos.position.map(p => p.toFixed(this.precision))
+    /*const scale = clamp(
+      mapRange(
+        length(this.pos.velocity),
+        this.speedRange[0],
+        this.speedRange[1],
+        this.mapScales[0],
+        this.mapScales[1],
+      ),
+      this.mapScales[0],
+      this.mapScales[1],
+    )*/
     const transform = !mode ? '' : `transform="rotate(${-rotDegZ}) translate(${-x},${y})"`
 
     const minimapPath = `

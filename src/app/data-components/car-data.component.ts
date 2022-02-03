@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core'
-import {CarData} from '../protocol/type-definitions'
+import {CarData, Waypoints} from '../protocol/type-definitions'
 
 @Component({
   selector: 'car-data',
@@ -9,7 +9,13 @@ import {CarData} from '../protocol/type-definitions'
 export class CarDataComponent {
   _carData!: CarData
 
+  _waypoints?: Waypoints
+
   @Input() set carData(carData: CarData) {
     this._carData = carData
+  }
+
+  @Input() set waypoints(waypoints: Waypoints | undefined) {
+    this._waypoints = waypoints
   }
 }

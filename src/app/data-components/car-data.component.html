@@ -13,6 +13,12 @@
       <feature-bulb-view [isOn]="_carData.inputData?.tcsTriggered">TCS</feature-bulb-view>
       <feature-bulb-view [isOn]="_carData.inputData?.espTriggered">ESP</feature-bulb-view>
     </div>
+    <minimap-view
+      map
+      [waypoints]="_waypoints"
+      [playerPos]="_carData.positionData"
+      [mode]="'player'"
+    ></minimap-view>
   </steering-view>
   <slider-input-view
     [primary]="_carData.inputData?.throttleInput || 0"
