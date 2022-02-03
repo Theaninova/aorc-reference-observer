@@ -19,6 +19,8 @@ export class ProtocolService {
 
   connectError!: Observable<Error>
 
+  loadLevel!: Observable<ClientData<number>>
+
   waypoints!: Observable<ClientData<Waypoints>>
 
   constructor() {
@@ -55,6 +57,11 @@ export class ProtocolService {
     this.waypoints = fromEventPattern<ClientData<Waypoints>>(
       handler => this.client.on('waypointsGathered', handler),
       handler => this.client.off('waypointsGathered', handler),
+    )
+
+    this.loadLevel = fromEventPattern<ClientData<number>>(
+      handler => this.client.on('loadLevel', handler),
+      handler => this.client.off('loadLevel', handler),
     )
 
     this.client.connect()

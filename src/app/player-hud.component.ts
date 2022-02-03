@@ -4,6 +4,7 @@ import {CarData, Waypoints} from './protocol/type-definitions'
 import {ProtocolService} from './protocol/protocol.service'
 import {Subscription} from 'rxjs'
 import {ActivatedRoute} from '@angular/router'
+import {contextualThemeMap} from './theme-selector'
 
 @Component({
   selector: 'advanced-hud',
@@ -22,6 +23,8 @@ export class PlayerHudComponent implements OnInit, OnDestroy {
 
   theme = 'default'
 
+  themeOverride = false
+
   darkMode = true
 
   steeringContent: 'stacked' | 'map' = 'map'
@@ -38,6 +41,7 @@ export class PlayerHudComponent implements OnInit, OnDestroy {
         }
         if (parameters['theme']) {
           this.theme = parameters['theme']
+          this.themeOverride = true
         }
         if (parameters['steering-content']) {
           this.steeringContent = parameters['steering-content'] === 'map' ? 'map' : 'stacked'
@@ -50,6 +54,11 @@ export class PlayerHudComponent implements OnInit, OnDestroy {
         update => (this.carData = update.data.carData ?? DEFAULT_DATA.carData!),
       ),
       this.protocolService.waypoints.subscribe(waypoints => (this.waypoints = waypoints.data)),
+      this.protocolService.loadLevel.subscribe(level => {
+        if (!this.themeOverride) {
+          this.theme = contextualThemeMap[level.data] ?? 'default'
+        }
+      }),
     )
   }
 
