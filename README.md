@@ -31,7 +31,7 @@ Add a browser source, then add this URL:
 *Note: You still need the [client mod](https://github.com/Theaninova/aorc-server) and the
 [server](https://github.com/Theaninova/aorc-server) running to use this overlay.*
 
-![](about-images/advanced-hud.png)
+![](about-images/hud-map-green.png)
 
 #### Features
 
