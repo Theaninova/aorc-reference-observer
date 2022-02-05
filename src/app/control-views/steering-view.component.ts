@@ -21,7 +21,7 @@ export class SteeringViewComponent {
 
   @Input() set value(value: number) {
     this._value = value
-    this._transform = this.sanitizer.bypassSecurityTrustStyle(`rotate(${value * 90}deg)`)
+    this._transform = this.sanitizer.bypassSecurityTrustStyle(`rotate(${value * 90}deg 120 120)`)
   }
 
   @Input() set gear(gear: number) {
