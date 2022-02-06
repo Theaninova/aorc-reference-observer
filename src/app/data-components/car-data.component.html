@@ -1,8 +1,7 @@
 <div class="horizontal">
   <steering-view
+    style="height: 100%"
     [value]="_carData.inputData?.steeringInput || 0"
-    [gear]="_carData.drivetrain?.gear || 1"
-    [changingGear]="_carData.drivetrain?.isChangingGear"
     [inside]="steeringContent"
   >
     <div double class="horizontal">
@@ -21,44 +20,44 @@
       [mode]="'player'"
     ></minimap-view>
   </steering-view>
-  <slider-input-view
-    [primary]="_carData.inputData?.throttleInput || 0"
-    [max]="9000"
-    [secondary]="_carData.drivetrain?.rpm || 0"
-    [value]="_carData.drivetrain?.rpm || 0"
-  >
-    <div value>{{ _carData.drivetrain?.rpm || 0 | formatFixed }}</div>
-    RPM
-  </slider-input-view>
-  <slider-input-view
-    [primary]="_carData.inputData?.brakeInput || 0"
-    [secondary]="_carData.inputData?.handbrakeInput || 0"
-    [secondaryInput]="true"
-  >
-    <div value class="horizontal" style="height: 100%; align-items: center">
-      <div
-        class="top-label"
-        style="padding-left: 2px"
-        [style.animation-delay]="-(_carData.assistance?.absTriggered || 0) + 's'"
-      >
-        ABS
+  <div class="sliders">
+    <slider-input-view
+      [primary]="_carData.inputData?.throttleInput || 0"
+      [max]="9000"
+      [secondary]="_carData.drivetrain?.rpm || 0"
+      >{{ _carData.drivetrain?.rpm || 0 | formatFixed }}
+    </slider-input-view>
+    <gear-view [drivetrain]="_carData.drivetrain"></gear-view>
+    <slider-input-view
+      [primary]="_carData.inputData?.brakeInput || 0"
+      [secondary]="_carData.inputData?.handbrakeInput || 0"
+      [secondaryInput]="true"
+    >
+      <div value class="horizontal" style="height: 100%; align-items: center">
+        <div
+          class="top-label"
+          style="padding-left: 2px"
+          [style.animation-delay]="-(_carData.assistance?.absTriggered || 0) + 's'"
+        >
+          ABS
+        </div>
+        <div class="top-label" [style.animation-delay]="-(_carData.assistance?.tcsTriggered || 0) + 's'">
+          TCS
+        </div>
+        <div
+          class="top-label"
+          style="padding-right: 2px"
+          [style.animation-delay]="-(_carData.assistance?.espTriggered || 0) + 's'"
+        >
+          ESP
+        </div>
       </div>
-      <div class="top-label" [style.animation-delay]="-(_carData.assistance?.tcsTriggered || 0) + 's'">
-        TCS
-      </div>
-      <div
-        class="top-label"
-        style="padding-right: 2px"
-        [style.animation-delay]="-(_carData.assistance?.espTriggered || 0) + 's'"
-      >
-        ESP
-      </div>
-    </div>
-    Brake</slider-input-view
-  >
-  <slider-input-view
-    [primary]="_carData.inputData?.clutchInput || 0"
-    [secondary]="_carData.drivetrain?.clutch || 0"
-    >Clutch</slider-input-view
-  >
+      Brake</slider-input-view
+    >
+    <slider-input-view
+      [primary]="_carData.inputData?.clutchInput || 0"
+      [secondary]="_carData.drivetrain?.clutch || 0"
+      >Clutch</slider-input-view
+    >
+  </div>
 </div>

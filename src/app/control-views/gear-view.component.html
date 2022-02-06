@@ -1,0 +1,16 @@
+<div class="gears control-container">
+  <div
+    class="gear"
+    [ngClass]="[
+      'gear',
+      _drivetrain?.gear === i
+        ? _drivetrain?.isChangingGear
+          ? 'gear-changing'
+          : 'gear-active'
+        : 'gear-default'
+    ]"
+    *ngFor="let label of ['R', 'N', '1', '2', '3', '4', '5']; index as i"
+  >
+    {{ label }}
+  </div>
+</div>

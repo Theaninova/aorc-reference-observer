@@ -11,10 +11,6 @@ export class SteeringViewComponent {
 
   _value!: number
 
-  _gear!: number
-
-  _changingGear!: boolean
-
   @Input() inside: 'stacked' | 'map' = 'map'
 
   constructor(readonly sanitizer: DomSanitizer) {}
@@ -22,13 +18,5 @@ export class SteeringViewComponent {
   @Input() set value(value: number) {
     this._value = value
     this._transform = this.sanitizer.bypassSecurityTrustStyle(`rotate(${value * 90}deg 120 120)`)
-  }
-
-  @Input() set gear(gear: number) {
-    this._gear = gear
-  }
-
-  @Input() set changingGear(changingGear: boolean | undefined) {
-    this._changingGear = changingGear ?? false
   }
 }

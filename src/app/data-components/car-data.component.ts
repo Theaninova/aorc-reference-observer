@@ -4,7 +4,7 @@ import {CarData, Waypoints} from '../protocol/type-definitions'
 @Component({
   selector: 'car-data',
   templateUrl: 'car-data.component.html',
-  styleUrls: ['car-data.component.scss'],
+  styleUrls: ['car-data.component.scss', '../control-views/control-container.scss'],
 })
 export class CarDataComponent {
   _carData!: CarData

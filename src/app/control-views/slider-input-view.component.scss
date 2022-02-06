@@ -1,9 +1,9 @@
 .control-container {
-  min-width: 70px;
-  max-width: 90px;
+  width: 75px;
 
+  border-radius: 4px;
   background-color: var(--surface);
-  border-radius: 12px 12px 12px 12px;
+
   color: var(--on-surface);
 }
 

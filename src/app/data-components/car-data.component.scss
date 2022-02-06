@@ -1,11 +1,25 @@
-
-
 .horizontal {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-content: center;
+  justify-content: space-between;
+}
+
+.sliders {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
   justify-content: center;
+
+  :last-child::ng-deep.control-container {
+    border-radius: 4px 80% 16px 4px;
+  }
+
+  :first-child::ng-deep.control-container {
+    border-radius: 80% 4px 4px 16px;
+  }
 }
 
 @keyframes blend-label {

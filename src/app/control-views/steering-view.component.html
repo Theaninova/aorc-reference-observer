@@ -6,7 +6,12 @@
       class="half-circle grid-element steering-component"
     >
       <!-- draw an arc from left to top to right -->
-      <path d="M 20 120 A 100 100 180 0 1 220 120" fill="none" stroke-linecap="round" stroke-width="40" />
+      <path
+        d="M 20 140 L 20 120 A 100 100 180 0 1 220 120 L 220 140"
+        fill="none"
+        stroke-linecap="butt"
+        stroke-width="40"
+      />
       <!-- http://xahlee.info/js/svg_circle_arc.html -->
       <!-- <path d=" M 135 25 A 16 16 20 0 1 105 25" [style.transform]="_transform"></path> -->
       <circle cx="120" cy="20" r="16" class="circle-control" [style.transform]="_transform" />
@@ -22,17 +27,6 @@
       </div>
       <div *ngSwitchCase="'map'" class="map-container">
         <ng-content select="[map]"></ng-content>
-      </div>
-    </div>
-  </div>
-  <div class="control-label">
-    <div class="gears">
-      <div
-        class="gear"
-        [ngClass]="['gear', _gear === i ? (_changingGear ? 'gear-changing' : 'gear-active') : 'gear-default']"
-        *ngFor="let label of ['R', 'N', '1', '2', '3', '4', '5']; index as i"
-      >
-        {{ label }}
       </div>
     </div>
   </div>

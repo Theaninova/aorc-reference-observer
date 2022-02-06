@@ -1,8 +1,6 @@
 <div [ngClass]="'theme-' + theme + '-' + (darkMode ? 'dark' : 'light')">
   <div *ngIf="connected; else disconnected">
-    <div class="horizontal">
-      <car-data [carData]="carData" [waypoints]="waypoints" [steeringContent]="steeringContent"></car-data>
-    </div>
+    <car-data [carData]="carData" [waypoints]="waypoints" [steeringContent]="steeringContent"></car-data>
   </div>
   <ng-template #disconnected>
     <div [ngClass]="[connected ? 'connected-box' : 'disconnected-box', 'connection-status-box']">
