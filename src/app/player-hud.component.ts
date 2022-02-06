@@ -27,8 +27,6 @@ export class PlayerHudComponent implements OnInit, OnDestroy {
 
   darkMode = true
 
-  steeringContent: 'stacked' | 'map' = 'map'
-
   subscriptions: Array<Subscription> = []
 
   constructor(readonly protocolService: ProtocolService, readonly route: ActivatedRoute) {}
@@ -42,9 +40,6 @@ export class PlayerHudComponent implements OnInit, OnDestroy {
         if (parameters['theme']) {
           this.theme = parameters['theme']
           this.themeOverride = true
-        }
-        if (parameters['steering-content']) {
-          this.steeringContent = parameters['steering-content'] === 'map' ? 'map' : 'stacked'
         }
       }),
       this.protocolService.connected.subscribe(connected => (this.connected = connected)),

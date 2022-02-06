@@ -1,20 +1,6 @@
 <div class="horizontal">
-  <steering-view
-    style="height: 100%"
-    [value]="_carData.inputData?.steeringInput || 0"
-    [inside]="steeringContent"
-  >
-    <div double class="horizontal">
-      <!--<feature-bulb-view [state]="_carData.drivetrain?.canStall">WRN</feature-bulb-view>-->
-      <!-- <feature-bulb-view [state]="_carData.drivetrain?.isStalling">STL</feature-bulb-view> -->
-    </div>
-    <div triple class="horizontal">
-      <feature-bulb-view [state]="_carData.assistance?.absTriggered">ABS</feature-bulb-view>
-      <feature-bulb-view [state]="_carData.assistance?.tcsTriggered">TCS</feature-bulb-view>
-      <feature-bulb-view [state]="_carData.assistance?.espTriggered">ESP</feature-bulb-view>
-    </div>
+  <steering-view style="height: 100%" [value]="_carData.inputData?.steeringInput || 0">
     <minimap-view
-      map
       [waypoints]="_waypoints"
       [playerPos]="_carData.positionData"
       [mode]="'player'"
@@ -57,6 +43,7 @@
     <slider-input-view
       [primary]="_carData.inputData?.clutchInput || 0"
       [secondary]="_carData.drivetrain?.clutch || 0"
+      [secondaryPosition]="'start'"
       >Clutch</slider-input-view
     >
   </div>

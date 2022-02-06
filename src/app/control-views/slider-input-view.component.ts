@@ -14,6 +14,8 @@ export class SliderInputViewComponent {
 
   @Input() secondaryInput = false
 
+  @Input() secondaryPosition: 'start' | 'end' = 'end'
+
   _secondary?: number
 
   _primary = 0

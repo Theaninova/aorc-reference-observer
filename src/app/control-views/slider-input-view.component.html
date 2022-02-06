@@ -4,7 +4,7 @@
     <div class="box wanted">
       <div class="wanted-slider slider" [style.height.px]="_primary * 200"></div>
     </div>
-    <div *ngIf="_secondary || _secondary === 0" class="box actual">
+    <div *ngIf="_secondary || _secondary === 0" class="box actual" [style.justify-self]="secondaryPosition">
       <div
         [ngClass]="['slider', secondaryInput ? 'wanted-slider' : 'actual-slider']"
         [style.height.px]="_secondary * 200"

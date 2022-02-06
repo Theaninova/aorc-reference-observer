@@ -1,33 +1,18 @@
-<div class="control-container">
-  <div class="overlaid">
-    <svg
-      viewBox="0 0 240 140"
-      xmlns="http://www.w3.org/2000/svg"
-      class="half-circle grid-element steering-component"
-    >
-      <!-- draw an arc from left to top to right -->
-      <path
-        d="M 20 140 L 20 120 A 100 100 180 0 1 220 120 L 220 140"
-        fill="none"
-        stroke-linecap="butt"
-        stroke-width="40"
-      />
-      <!-- http://xahlee.info/js/svg_circle_arc.html -->
-      <!-- <path d=" M 135 25 A 16 16 20 0 1 105 25" [style.transform]="_transform"></path> -->
-      <circle cx="120" cy="20" r="16" class="circle-control" [style.transform]="_transform" />
-    </svg>
-    <div [ngSwitch]="inside" class="grid-element content">
-      <div class="buttons-content" *ngSwitchCase="'stacked'">
-        <div>
-          <ng-content select="[double]"></ng-content>
-        </div>
-        <div>
-          <ng-content select="[triple]"></ng-content>
-        </div>
-      </div>
-      <div *ngSwitchCase="'map'" class="map-container">
-        <ng-content select="[map]"></ng-content>
-      </div>
-    </div>
+<div class="control-container overlaid">
+  <svg
+    viewBox="0 0 450 255"
+    xmlns="http://www.w3.org/2000/svg"
+    class="half-circle grid-element steering-component"
+  >
+    <path
+      d="M 30 255 L 30 225 A 97.5 97.5 180 0 1 420 225 L 420 255"
+      fill="none"
+      stroke-linecap="butt"
+      stroke-width="60"
+    />
+    <circle cx="225" cy="30" r="25" class="circle-control" [style.transform]="_transform" />
+  </svg>
+  <div class="grid-element map-container">
+    <ng-content></ng-content>
   </div>
 </div>

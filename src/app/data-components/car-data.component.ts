@@ -11,8 +11,6 @@ export class CarDataComponent {
 
   _waypoints?: Waypoints
 
-  @Input() steeringContent: 'map' | 'stacked' = 'map'
-
   @Input() set carData(carData: CarData) {
     this._carData = carData
   }
