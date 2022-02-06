@@ -1,5 +1,5 @@
 <div class="control-container">
-  <div class="control-value">{{ _value | formatFixed }} {{ unit }}</div>
+  <div class="control-value"><ng-content select="[value]"></ng-content></div>
   <div class="box-container">
     <div class="box wanted">
       <div class="wanted-slider slider" [style.height.px]="_primary * 200"></div>

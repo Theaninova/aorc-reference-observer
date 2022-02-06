@@ -3,7 +3,7 @@
   max-width: 90px;
 
   background-color: var(--surface);
-  border-radius: 16px;
+  border-radius: 12px 12px 12px 12px;
   color: var(--on-surface);
 }
 
@@ -14,7 +14,6 @@
 }
 
 .box {
-  border-radius: 8px;
   height: 200px;
   width: 100%;
   transition: all 0.3s ease-in-out;
@@ -30,6 +29,7 @@
 }
 
 .wanted {
+  border-radius: 0 0 8px 8px;
   grid-column: 1;
   grid-row: 1;
   justify-self: start;
@@ -37,6 +37,7 @@
 }
 
 .actual {
+  border-radius: 0 0 8px 0;
   width: 12px;
   grid-column: 1;
   grid-row: 1;

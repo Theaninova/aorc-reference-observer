@@ -20,7 +20,7 @@ export class DebugPageComponent implements OnInit, OnDestroy {
 
   mockWaypoints: Map<string, Waypoints> = new Map()
 
-  theme!: 'theme-dark' | 'theme-light'
+  theme!: 'theme-default-dark' | 'theme-default-light'
 
   useMock = true
 
@@ -31,9 +31,11 @@ export class DebugPageComponent implements OnInit, OnDestroy {
   constructor(readonly protocolService: ProtocolService) {}
 
   ngOnInit() {
-    this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'theme-dark' : 'theme-light'
+    this.theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'theme-default-dark'
+      : 'theme-default-light'
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-      this.theme = event.matches ? 'theme-dark' : 'theme-light'
+      this.theme = event.matches ? 'theme-default-dark' : 'theme-default-light'
     })
 
     this.subscriptions.push(

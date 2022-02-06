@@ -6,15 +6,18 @@ export interface PositionData {
   velocity: Vector3
 }
 
+export interface AssistanceData {
+  absTriggered: number // float
+  tcsTriggered: number // float
+  espTriggered: number // float
+}
+
 export interface InputData {
   throttleInput: number // float
   steeringInput: number // float
   brakeInput: number // float
   handbrakeInput: number // float
   clutchInput: number // float
-  absTriggered: boolean
-  tcsTriggered: boolean
-  espTriggered: boolean
 }
 
 export interface CarData {
@@ -22,6 +25,7 @@ export interface CarData {
   inputData?: InputData
   brakeData?: BrakeData
   drivetrain?: DrivetrainData
+  assistance?: AssistanceData
 }
 
 export interface BrakeData {

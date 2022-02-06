@@ -7,3 +7,26 @@
   align-content: center;
   justify-content: center;
 }
+
+@keyframes blend-label {
+  0% {
+    color: var(--on-surface);
+    background-color: var(--surface);
+    font-weight: bold;
+  }
+  100% {
+    color: var(--on-tertiary);
+    background-color: var(--tertiary);
+    font-weight: bolder;
+  }
+}
+
+.top-label {
+  display: flex;
+  font-size: 0.6em;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  animation: blend-label 1s linear forwards paused;
+}

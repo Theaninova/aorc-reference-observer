@@ -14,9 +14,11 @@ export const DEFAULT_DATA: StageUpdateData = {
       steeringInput: 0,
       brakeInput: 0,
       handbrakeInput: 0,
-      tcsTriggered: false,
-      espTriggered: false,
-      absTriggered: false,
+    },
+    assistance: {
+      espTriggered: 0,
+      tcsTriggered: 0,
+      absTriggered: 0,
     },
     brakeData: {
       temperatureBack: 0,
@@ -340,9 +342,11 @@ export const MOCK_DATA: ClientData<StageUpdateData>[] = [
           steeringInput: 0.2533,
           brakeInput: 0.52,
           handbrakeInput: 0.363_323_44,
-          tcsTriggered: false,
-          espTriggered: true,
-          absTriggered: false,
+        },
+        assistance: {
+          tcsTriggered: 1,
+          espTriggered: 0.5,
+          absTriggered: 0,
         },
         brakeData: {
           temperatureBack: 15,

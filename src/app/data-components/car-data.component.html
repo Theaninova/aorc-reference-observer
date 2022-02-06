@@ -6,13 +6,13 @@
     [inside]="steeringContent"
   >
     <div double class="horizontal">
-      <feature-bulb-view [isOn]="_carData.drivetrain?.canStall">WRN</feature-bulb-view>
-      <feature-bulb-view [isOn]="_carData.drivetrain?.isStalling">STL</feature-bulb-view>
+      <!--<feature-bulb-view [state]="_carData.drivetrain?.canStall">WRN</feature-bulb-view>-->
+      <!-- <feature-bulb-view [state]="_carData.drivetrain?.isStalling">STL</feature-bulb-view> -->
     </div>
     <div triple class="horizontal">
-      <feature-bulb-view [isOn]="_carData.inputData?.absTriggered">ABS</feature-bulb-view>
-      <feature-bulb-view [isOn]="_carData.inputData?.tcsTriggered">TCS</feature-bulb-view>
-      <feature-bulb-view [isOn]="_carData.inputData?.espTriggered">ESP</feature-bulb-view>
+      <feature-bulb-view [state]="_carData.assistance?.absTriggered">ABS</feature-bulb-view>
+      <feature-bulb-view [state]="_carData.assistance?.tcsTriggered">TCS</feature-bulb-view>
+      <feature-bulb-view [state]="_carData.assistance?.espTriggered">ESP</feature-bulb-view>
     </div>
     <minimap-view
       map
@@ -27,6 +27,7 @@
     [secondary]="_carData.drivetrain?.rpm || 0"
     [value]="_carData.drivetrain?.rpm || 0"
   >
+    <div value>{{ _carData.drivetrain?.rpm || 0 | formatFixed }}</div>
     RPM
   </slider-input-view>
   <slider-input-view
@@ -34,6 +35,25 @@
     [secondary]="_carData.inputData?.handbrakeInput || 0"
     [secondaryInput]="true"
   >
+    <div value class="horizontal" style="height: 100%; align-items: center">
+      <div
+        class="top-label"
+        style="padding-left: 2px"
+        [style.animation-delay]="-(_carData.assistance?.absTriggered || 0) + 's'"
+      >
+        ABS
+      </div>
+      <div class="top-label" [style.animation-delay]="-(_carData.assistance?.tcsTriggered || 0) + 's'">
+        TCS
+      </div>
+      <div
+        class="top-label"
+        style="padding-right: 2px"
+        [style.animation-delay]="-(_carData.assistance?.espTriggered || 0) + 's'"
+      >
+        ESP
+      </div>
+    </div>
     Brake</slider-input-view
   >
   <slider-input-view

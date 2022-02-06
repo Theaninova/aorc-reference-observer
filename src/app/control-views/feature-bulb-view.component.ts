@@ -6,9 +6,9 @@ import {Component, Input} from '@angular/core'
   styleUrls: ['./feature-bulb-view.component.scss'],
 })
 export class FeatureBulbViewComponent {
-  _isOn!: boolean
+  _state!: number
 
-  @Input() set isOn(value: boolean | undefined) {
-    this._isOn = value || false
+  @Input() set state(value: number | undefined) {
+    this._state = value || 0
   }
 }
