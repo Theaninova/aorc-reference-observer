@@ -31,7 +31,7 @@ Add a browser source, then add this URL:
 *Note: You still need the [client mod](https://github.com/Theaninova/aorc-server) and the
 [server](https://github.com/Theaninova/aorc-server) running to use this overlay.*
 
-![](about-images/hud-map-green.png)
+![](https://media.discordapp.net/attachments/937310742003187722/939887837950644234/unknown.png?width=788&height=448)
 
 #### Features
 
@@ -86,7 +86,6 @@ You can configure the HUD by adding the following query parameters
 |--------------------|-----------------------------------------------------------------------|--------------------------------------------------------------|
 | `theme`            | Specify a theme override                                              | `default`, `cherry`, `finland`, `nasu`, `norway`, `sardinia` |
 | `dark-mode`        | Weather to enable dark mode (default is true)                         | `true`, `false`                                              |
-| `steering-content` | The content to show in the steering wheel.                            | `map`, `status`                                              |
 | `map-zoom`         | Controls the size of the map in in-game units, with the player at 0,0 | `[originX (left)]-[originY(top)]-[width]-[height]`           |
 | `player-zoom`      | Controls the relative zoom factor of the player                       | `[number]`                                                   |
 
@@ -99,7 +98,7 @@ You can add additional parameters like this
 `[original URL]?[parameter name]=[parameter value]&[parameter name]=[parameter value]`
 
 For example to have a light HUD with a map, you can add the following query parameter:
-`[original URL]?theme=light&steering-content=map`
+`[original URL]?theme=light&dark-mode=false`
 
 *Note: The parameters are usually quite forgiving, for example with the theme you can
 use anything that contains the word `light` or `dark`. But be aware that this behavior
